@@ -17,6 +17,15 @@ let map;
 let mainLayer;
 let marker;
 
+// Fixing CORS issues
+
+const bypass_cors_url = "https://cors-anywhere.herokuapp.com/";
+const header_options = {
+    headers: {
+        'Access-Control-Allow-Origin' : '*',
+    }
+}
+
 // Variables for the IP API
 let ip_url;
 const apiKey = "at_REL4efjOZl4Z6ulxFE2IluZmnjuqY";
@@ -64,12 +73,12 @@ function callMap(lat, long) {
 getIPAdress = (default_ip) => {
 
     if(default_ip == undefined) {
-        ip_url = `https://geo.ipify.org/api/v2/country,city?apiKey=${apiKey}`;
+        ip_url = `${bypass_cors_url}https://geo.ipify.org/api/v2/country,city?apiKey=${apiKey}`;
     } else {
-        ip_url = `https://geo.ipify.org/api/v2/country,city?apiKey=${apiKey}&ipAddress=${default_ip}`;
+        ip_url = `${bypass_cors_url}https://geo.ipify.org/api/v2/country,city?apiKey=${apiKey}&ipAddress=${default_ip}`;
     }
 
-    fetch(ip_url)
+    fetch(ip_url, header_options)
     .then((reponse) => {
         return reponse.json();
     })
