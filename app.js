@@ -1,7 +1,3 @@
-// IP Canada
-// Amsterdam 185.180.223.193
-// Japon 84.17.34.18
-
 // Selecting HTML markups
 const loader = document.querySelector(".loader");
 const inputIP = document.querySelector("#input-ip");
@@ -64,7 +60,6 @@ function callMap(lat, long) {
     if(!loader.classList.contains("loader-invisible")) {
         loader.classList.add("loader-invisible");
         document.querySelector("body").style.overflowY = "visible";
-        // document.querySelector("#map").style.display = "block";
         loader.innerHTML = "";
     }
 }
@@ -83,12 +78,10 @@ getIPAdress = (default_ip) => {
         return reponse.json();
     })
     .then((data) => {
-        console.log(data);
         callMap(data.location.lat, data.location.lng);
         updateInfos(data);
     })
     .catch((error) => {
-        console.log(error);
         window.alert("Please enter a valid address IP or domain name");
     });
 }
