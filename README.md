@@ -1,3 +1,5 @@
+⚠️ I'm facing an issue on my script, and I'm currently fixing it :)⚠️
+
 [View live site](https://kilelx.github.io/IP-Address-Tracker/)
 
 # Frontend Mentor - IP address tracker solution
